@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ring Size Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Ring Size Tool</h1>
+            <p class="subtitle">Get accurate ring measurements in millimeters across any device</p>
+
+            <!-- Calibration Toggle -->
+            <div class="calibration-toggle">
+                <button class="toggle-btn active" data-method="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card h-12 w-12 text-primary"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+                    Use a Card
+                </button>
+                <button class="toggle-btn" data-method="ruler">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ruler h-12 w-12 text-primary"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"></path><path d="m14.5 12.5 2-2"></path><path d="m11.5 9.5 2-2"></path><path d="m8.5 6.5 2-2"></path><path d="m17.5 15.5 2-2"></path></svg>
+                    Use a Ruler
+                </button>
+            </div>
+
+            <!-- Card Calibration -->
+            <div id="cardCalibration" class="calibration-section">
+                <div class="calibration-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card h-12 w-12 text-primary"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+                    <div>
+                        <h3>Card Calibration</h3>
+                        <p>Use your credit card for precise measurements</p>
+                    </div>
+                </div>
+
+                <div class="calibration-content">
+                    <div class="card-template">
+                        <div class="card-guide">
+                            <div class="red-line top"></div>
+                            <div class="placeholder-text">PLACE CARD HERE</div>
+                            <div class="red-line bottom"></div>
+                        </div>
+                    </div>
+
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span>Adjust card size</span>
+                            <span class="size-display">Height: 200px</span>
+                        </div>
+                        <input type="range" id="cardSizeSlider" min="100" max="400" value="200">
+                    </div>
+
+                    <ol class="instructions">
+                        <li>Place your credit card on the screen according to the template below</li>
+                        <li>Use the slider to adjust until the red lines match your card's height</li>
+                        <li>Once perfectly aligned, click the button below</li>
+                    </ol>
+
+                    <div class="tip">
+                        💡 Tip: Take your time with the size adjustment - accurate calibration ensures precise ring measurements.
+                    </div>
+
+                    <button class="primary-button" id="confirmCardCalibration">
+                        Confirm Calibration
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ruler Calibration -->
+            <div id="rulerCalibration" class="calibration-section hidden">
+                <div class="calibration-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ruler h-12 w-12 text-primary"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"></path><path d="m14.5 12.5 2-2"></path><path d="m11.5 9.5 2-2"></path><path d="m8.5 6.5 2-2"></path><path d="m17.5 15.5 2-2"></path></svg>
+                    <div>
+                        <h3>Ruler Calibration</h3>
+                        <p>Use your physical ruler for precise measurements</p>
+                    </div>
+                </div>
+
+                <div class="calibration-content">
+                    <div class="ruler-template">
+                        <div class="ruler"></div>
+                    </div>
+
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span>Adjust ruler width</span>
+                            <span class="size-display">Width: 200px</span>
+                        </div>
+                        <input type="range" id="rulerSizeSlider" min="100" max="400" value="200">
+                    </div>
+
+                    <ol class="instructions">
+                        <li>Place your ruler on the screen over the measurement line</li>
+                        <li>Adjust the width until the 5cm mark aligns perfectly</li>
+                        <li>Once perfectly aligned, click the button below</li>
+                    </ol>
+
+                    <div class="tip">
+                        💡 Tip: Make sure your ruler is perfectly straight and aligned with the screen markings.
+                    </div>
+
+                    <button class="primary-button" id="confirmRulerCalibration">
+                        Confirm Calibration
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ring Sizer -->
+            <div id="ringSizer" class="ring-section hidden">
+                <div class="ring-container">
+                    <div class="ring">
+                        <div class="crosshair-v"></div>
+                        <div class="crosshair-h"></div>
+                        <span class="size-label">15.0 mm</span>
+                    </div>
+
+                    <div class="size-controls">
+                        <button class="control-btn" id="decreaseSize">-</button>
+                        <input type="range" id="sizeSlider" min="10" max="30" step="0.1" value="15">
+                        <button class="control-btn" id="increaseSize">+</button>
+                    </div>
+                </div>
+
+                <div class="size-info">
+                    <div class="current-size">
+                        <span>Ring Size</span>
+                        <span class="size-value">15.0 mm</span>
+                    </div>
+
+                    <div class="tip">
+                        💡 Tip: Place your ring flat against the screen and adjust until the 
+                        circle matches your ring's inner diameter perfectly.
+                    </div>
+
+                    <button class="secondary-button" id="recalibrate">
+                        Recalibrate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
